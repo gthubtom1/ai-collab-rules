@@ -4,7 +4,7 @@ globs:
 alwaysApply: true
 ---
 
-# AI 协作规则 · 0基础全托管万能版 (v2.8)
+# AI 协作规则 · 0基础全托管万能版 (v2.9)
 
 > 适用人：不懂技术、只会说一句话需求、全靠 AI 的项目拥有者。
 > 适用范围：任何项目（全新起步 / 接手已有 / 长期维护），不绑定具体技术栈或路径。
@@ -111,6 +111,8 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - **诚实边界**：文本不能 100% 强制，但「映射表 + 总门控 + 固化 + skill 自身铁律 + Cursor 按上下文自动触发」是最强组合。
 - **两层技能体系**：① **第一层（精简·自动触发）** = 上表这批核心（流程 + UI + 测试 + 文档），常驻、随套件分发；② **第二层（全面·按需调用）** = 后端/数据库/移动/支付/地图/各语言等领域 skill——**不预载**（避免上下文臃肿），任务命中某领域时**从可信源按需取**（优先 `anthropics/skills`、`vercel-labs/agent-skills`、`addyosmani/agent-skills`，其次社区高星且经 C6 核查），Read 使用并入库沉淀。
 - **第一层已含工程全流程补充**（来自 `addyosmani/agent-skills` 67k★，C6 已核查）：安全=`security-and-hardening`、性能=`performance-optimization`、接口设计=`api-and-interface-design`、CI/CD=`ci-cd-and-automation`、可观测=`observability-and-instrumentation`、Git 工作流=`git-workflow-and-versioning`、前端工程=`frontend-ui-engineering`、文档/ADR=`documentation-and-adrs`、规格驱动=`spec-driven-development`、弃用迁移=`deprecation-and-migration`、发布=`shipping-and-launch`、上下文工程=`context-engineering`。进入对应阶段自动调用。
+- **先查索引再选 skill**：套件里有 `skills/MANIFEST.md`（领域 → skill → 描述）。选用 skill 前先看 MANIFEST 挑最合适的，别凭印象；上表只是常用核心，完整清单以 MANIFEST 为准。
+- **技能生命周期（新增/维护，写死）**：① 做项目命中某领域、套件里没有合适 skill → 从可信高星源（`anthropics/skills`、`vercel-labs/agent-skills`、`addyosmani/agent-skills`、`wshobson/agents` 等）按需取；② 必经 C6 核查（看来源 star、读 SKILL.md、扫脚本/外发，可疑则拒绝）；③ 写入 `.cursor/skills/`；④ **重新生成 `skills/MANIFEST.md`**；⑤ push 到正本 `ai-collab-rules`。删除 skill 同样要更新 MANIFEST。拒绝 0-star 大堆与脚本投毒。
 
 ## B · 按阶段的纪律（①→⑧，跟着项目走）
 
@@ -225,3 +227,4 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - v2.6（2026-06-28）：由「AI 的 UI/设计弱、BajieAsk role-skills 太简略」触发。确立**两层技能体系**（A6）：第一层精简自动触发，新增官方/大厂 `frontend-design`（Anthropic，反 AI 味 UI）、`web-design-guidelines`（Vercel，无障碍/UX 审计）、`webapp-testing`（Anthropic，Playwright），均经 C6 核查随套件分发；第二层领域 skill（后端/DB/安全/移动/支付/地图/各语言）按需从可信源取、核查后入库，避免上下文臃肿。
 - v2.7（2026-06-28）：用户指出社区有更优 skill。补入 `addyosmani/agent-skills`（6.7 万星，Addy Osmani，MIT）的 12 个工程全流程补充（security-and-hardening / performance-optimization / api-and-interface-design / ci-cd / observability / git-workflow / frontend-ui-engineering / documentation-and-adrs / spec-driven / deprecation-migration / shipping / context-engineering），全部 C6 核查（0 脚本）随套件分发。第一层从 12 增至 24，覆盖安全/性能/API/CI-CD/可观测/git 等原缺口。坚持「社区高星可信源 + 逐个核查」，拒绝 0-star 大堆与脚本投毒。
 - v2.8（2026-06-28）：多途径扩库。从 `wshobson/agents`（3.7 万星，MIT）补入后端/数据库/云/数据领域 23 个（微服务/CQRS/saga/事件溯源/架构模式/数据库设计/迁移/云基础设施/数据工程/API 安全等），C6 核查（仅 1 个 FastAPI 模板资产，无害）。套件增至 47 个，并生成 `skills/MANIFEST.md` 索引（领域→skill→描述），便于按需检索。至此覆盖全栈主要领域；后续按 C6 从可信高星源按需增补。
+- v2.9（2026-06-28）：定稿收口。A6 补「先查 `skills/MANIFEST.md` 索引再选 skill」+「技能生命周期标准流程」（命中缺口→可信源按需取→C6 核查→入库→重生成 MANIFEST→push 正本）。至此「未来加新 skill / 做项目按需取」全部写入规则，可自维护。**v2.9 定为稳定基线。**
