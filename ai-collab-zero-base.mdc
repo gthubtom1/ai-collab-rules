@@ -146,7 +146,7 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - **自进化**：每次踩坑/事故后，AI 主动复盘「这暴露了规则哪条缺口」，并把补丁写进规则。
 - **同步架构**：正本 = git 库 `ai-collab-rules`；工作副本 = 各项目 `.cursor/rules/ai-collab-zero-base.mdc`（Cursor 自动加载）；系统设置 = 瘦指针。
 - **进化流程**：改本地工作副本（落盘，本会话立刻重读生效）→ `git commit`（message 写「事故 → 补了哪条」，git 历史即进化履历）→ push 到 `ai-collab-rules` 正本。进化前先看 `git log` 避免重复。
-- **新项目**：从 `ai-collab-rules` 拉规则进 `.cursor/rules/`；系统设置瘦指针全局设一次即可。
+- **新项目自动引导（零手动）**：每个项目首次对话，AI 先检查本地有没有 `.cursor/rules/ai-collab-zero-base.mdc`；没有就**自动**从正本仓库 `https://github.com/gthubtom1/ai-collab-rules`（文件 `ai-collab-zero-base.mdc`）下载写入 `.cursor/rules/`，再读取执行。全程不需用户手动操作。系统设置瘦指针全局设一次即可。
 
 ### C7 Karpathy 四原则
 

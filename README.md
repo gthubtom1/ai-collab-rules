@@ -4,14 +4,17 @@
 
 > 给 0 基础项目拥有者：你只管 3 件事（说需求 / 答选择题 / 验收），全部工程严谨由 AI 内部承担。
 
-## 怎么用（开新项目时，一次性）
+## 怎么用（推荐：零手动）
 
-1. 把本仓库的 [`ai-collab-zero-base.mdc`](./ai-collab-zero-base.mdc) 复制到你新项目的 `.cursor/rules/ai-collab-zero-base.mdc`（Cursor 会自动加载、对该项目所有对话生效）。
-2. 在 Cursor「设置 → Rules → User（用户级）」放一句**瘦指针**（全局设一次，所有项目通用）：
+在 Cursor「设置 → Rules → User（用户级）」放一句**瘦指针**（全局设一次，所有项目通用）：
 
-   > 本项目协作规则以 `.cursor/rules/ai-collab-zero-base.mdc` 为准；每次会话先读它；冲突时以该文件为准。
+> 我的 AI 协作规则正本仓库：`https://github.com/gthubtom1/ai-collab-rules`（文件 `ai-collab-zero-base.mdc`）。每次进入一个项目的第一次对话，先检查本地有没有 `.cursor/rules/ai-collab-zero-base.mdc`：有就读它、按它执行、冲突时以它为准；没有就**自动**从上面仓库下载该文件写入 `.cursor/rules/` 再执行。全程不用我手动操作。
 
-3. 完成。规则自带记忆系统 + 自进化，开箱即用。
+之后每开一个新项目，AI 第一次对话会**自动**把规则拉到 `.cursor/rules/`，你什么都不用做。
+
+## 手动方式（可选）
+
+也可以手动把本仓库的 [`ai-collab-zero-base.mdc`](./ai-collab-zero-base.mdc) 复制到新项目的 `.cursor/rules/ai-collab-zero-base.mdc`。
 
 ## 三层同步（单一源，防漂移）
 
