@@ -1,6 +1,6 @@
 ﻿# Skills 索引 (MANIFEST)
 
-> 本套件随规则分发。命中某领域时按需 Read 对应 SKILL.md。
+> 本套件随规则分发。命中某领域时按需 Read 对应 SKILL.md。来源见 SOURCES.md。
 
 | skill | 描述 |
 |---|---|
@@ -18,9 +18,9 @@
 | `deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use w… |
 | `documentation-and-adrs` | Records decisions and documentation. Use when making architectural decisions, changing pub… |
 | `event-store-design` | Design and implement event stores for event-sourced systems. Use when building event sourc… |
-| `executing-plans` | 褰撲綘鏈変竴浠戒功闈㈠疄鐜拌鍒掗渶瑕佸湪鍗曠嫭鐨勪細璇濅腑鎵ц锛屽苟璁炬湁瀹℃煡妫€鏌ョ偣鏃朵娇鐢?--- |
+| `executing-plans` | 褰撲綘鏈変竴浠戒功闈㈠疄鐜拌鍒掗渶瑕佸湪鍗曠嫭鐨勪細璇濅腑鎵ц锛屽苟璁炬湁瀹℃煡妫€鏌ョ偣鏃朵娇鐢? |
 | `fastapi-templates` | Create production-ready FastAPI projects with async patterns, dependency injection, and co… |
-| `finishing-a-development-branch` | 瀹炵幇瀹屾垚銆佹祴璇曞叏杩囥€侀渶瑕佸喅瀹氬浣曟暣鍚堝伐浣滄椂浣跨敤鈥斺€旂粰鍑?merge/PR/淇濈暀/涓㈠純 鐨勭粨鏋勫寲閫夐」骞舵墽琛?--- |
+| `finishing-a-development-branch` | 瀹炵幇瀹屾垚銆佹祴璇曞叏杩囥€侀渶瑕佸喅瀹氬浣曟暣鍚堝伐浣滄椂浣跨敤鈥斺€旂粰鍑?merge/PR/淇濈暀/涓㈠純 鐨勭粨鏋勫寲閫夐」骞舵墽琛? |
 | `frontend-design` | Guidance for distinctive, intentional visual design when building new UI or reshaping an e… |
 | `frontend-ui-engineering` | Builds production-quality UIs. Use when building or modifying user-facing interfaces. Use … |
 | `git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, b… |
@@ -35,17 +35,17 @@
 | `postgresql` | Use this skill when designing or reviewing a PostgreSQL-specific schema. Covers best-pract… |
 | `projection-patterns` | Build read models and projections from event streams. Use when implementing CQRS read side… |
 | `receiving-code-review` | 鏀跺埌浠ｇ爜瀹℃煡鍙嶉銆佸湪瀹炴柦寤鸿涔嬪墠浣跨敤鈥斺€斿挨鍏跺綋鍙嶉涓嶆竻妤氭垨鎶€鏈笂瀛樼枒鏃讹紱瑕佹妧鏈弗璋ㄤ笌鏍稿疄锛屼笉瑕佽〃婕斿紡闄勫拰銆佷篃涓嶈鐩茬洰鐓у… |
-| `requesting-code-review` | 瀹屾垚浠诲姟銆佸疄鐜伴噸瑕佸姛鑳姐€佹垨鍚堝苟鍓嶄娇鐢ㄢ€斺€旀淳涓€涓嫭绔嬬殑浠ｇ爜瀹℃煡瀛愪唬鐞嗭紝鍦ㄩ棶棰樻墿鏁ｅ墠鎶撳嚭鏉?--- |
+| `requesting-code-review` | 瀹屾垚浠诲姟銆佸疄鐜伴噸瑕佸姛鑳姐€佹垨鍚堝苟鍓嶄娇鐢ㄢ€斺€旀淳涓€涓嫭绔嬬殑浠ｇ爜瀹℃煡瀛愪唬鐞嗭紝鍦ㄩ棶棰樻墿鏁ｅ墠鎶撳嚭鏉? |
 | `saga-orchestration` | Implement saga patterns for distributed transactions and cross-aggregate workflows. Use th… |
 | `security-and-hardening` | Hardens code against vulnerabilities. Use when handling user input, authentication, data s… |
 | `service-mesh-observability` | Implement comprehensive observability for service meshes including distributed tracing, me… |
 | `shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production. Use when you nee… |
 | `spark-optimization` | Optimize Apache Spark jobs with partitioning, caching, shuffle optimization, and memory tu… |
 | `spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant chan… |
-| `systematic-debugging` | 閬囧埌浠讳綍 bug銆佹祴璇曞け璐ユ垨寮傚父琛屼负鏃朵娇鐢紝鍦ㄦ彁鍑轰慨澶嶆柟妗堜箣鍓嶆墽琛?--- |
+| `systematic-debugging` | 閬囧埌浠讳綍 bug銆佹祴璇曞け璐ユ垨寮傚父琛屼负鏃朵娇鐢紝鍦ㄦ彁鍑轰慨澶嶆柟妗堜箣鍓嶆墽琛? |
 | `temporal-python-testing` | Test Temporal workflows with pytest, time-skipping, and mocking strategies. Covers unit te… |
 | `terraform-module-library` | Build reusable Terraform modules for AWS, Azure, GCP, and OCI infrastructure following inf… |
-| `test-driven-development` | 鍦ㄥ疄鐜颁换浣曞姛鑳芥垨淇 bug 鏃朵娇鐢紝鍦ㄧ紪鍐欏疄鐜颁唬鐮佷箣鍓?--- |
+| `test-driven-development` | 鍦ㄥ疄鐜颁换浣曞姛鑳芥垨淇 bug 鏃朵娇鐢紝鍦ㄧ紪鍐欏疄鐜颁唬鐮佷箣鍓? |
 | `verification-before-completion` | 鍦ㄥ绉板伐浣滃畬鎴愩€佸凡淇鎴栨祴璇曢€氳繃涔嬪墠浣跨敤锛屽湪鎻愪氦鎴栧垱寤?PR 涔嬪墠鈥斺€斿繀椤昏繍琛岄獙璇佸懡浠ゅ苟纭杈撳嚭鍚庢墠鑳藉０绉版垚鍔燂紱濮嬬粓鐢ㄨ瘉鎹… |
 | `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports… |
 | `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", … |
