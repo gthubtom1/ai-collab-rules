@@ -10,10 +10,10 @@
 
 ```
 【最高优先 · 每次会话第一步，先于一切，不许跳过】
-我的 AI 协作规则正本：https://github.com/gthubtom1/ai-collab-rules （文件 ai-collab-zero-base.mdc）。
+我的 AI 协作规则正本套件：https://github.com/gthubtom1/ai-collab-rules （规则 ai-collab-zero-base.mdc + skills/ 一套技能）。
 每次进入任何项目，第一件事先做规则自检：
 1) 检查本地 .cursor/rules/ai-collab-zero-base.mdc 是否存在。
-2) 不存在 → 自动从上面仓库下载写入 .cursor/rules/，成功后完整读取、逐条遵守。
+2) 不存在 → 自动从上面仓库下载整套：ai-collab-zero-base.mdc 写入 .cursor/rules/、skills/ 全部写入 .cursor/skills/，成功后完整读取规则、逐条遵守，并按规则 A6 在对应阶段调用对应 skill。
 3) 存在 → 直接完整读取、逐条遵守；冲突时以该文件为准。
 4) 下载失败（无网络/代理）→ 明确告诉我"规则没加载成功"，在规则就绪前只做安全的事，绝不碰下面的安全底线。
 
@@ -26,11 +26,24 @@
 你改不了文件、我也改不了这条系统设置——当它需要升级时，我必须主动把"新版指针全文"给你让你手动替换。规则正文的进化照常走文件+git。
 ```
 
-之后每开一个新项目，AI 第一次对话会**自动**把规则拉到 `.cursor/rules/`，你什么都不用做。
+之后每开一个新项目，AI 第一次对话会**自动**把整套（规则 + skills）拉到 `.cursor/`，你什么都不用做。
+
+## 配套技能 skills（随套件分发，规则 A6 强制调度）
+
+| 阶段 / 场景 | 调用的 skill |
+|---|---|
+| 需求澄清 | `brainstorming` |
+| 写实现计划 | `writing-plans` |
+| 执行计划 | `executing-plans` |
+| 写功能 / 修 bug | `test-driven-development` |
+| 遇 bug / 异常 | `systematic-debugging` |
+| 完成/合并/上线前独立审查 | `requesting-code-review` + `receiving-code-review` |
+| 收尾 / 整合分支 | `finishing-a-development-branch` |
+| **声称「完成」前（总门控）** | `verification-before-completion` |
 
 ## 手动方式（可选）
 
-也可以手动把本仓库的 [`ai-collab-zero-base.mdc`](./ai-collab-zero-base.mdc) 复制到新项目的 `.cursor/rules/ai-collab-zero-base.mdc`。
+也可以手动把本仓库的 [`ai-collab-zero-base.mdc`](./ai-collab-zero-base.mdc) 复制到新项目的 `.cursor/rules/`，把 `skills/` 复制到 `.cursor/skills/`。
 
 ## 三层同步（单一源，防漂移）
 

@@ -84,6 +84,25 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 4. **完成前「完整性自检」（强制）**：除了「能跑吗」，必答「**我漏了什么**」——边界、安全、配套、清理、用户的真实目标（而非只满足字面要求）。
 5. **被提醒即固化**：每一次「用户不得不提醒我」，立刻按 C6 把它变成一条**永久强制清单项**，下次自动触发，绝不靠运气再想一遍。
 
+### A6 技能强制调度（规则当编排，skill 当引擎）
+
+本规则配套一套 skills（在 `.cursor/skills/`，正本随规则一起放在 `ai-collab-rules` 仓库）。进入对应阶段/场景，**必须先 Read 对应 `SKILL.md` 并按它执行，不许凭印象跳过**：
+
+| 阶段 / 场景 | 必调 skill |
+|---|---|
+| 需求澄清（B①） | `brainstorming` |
+| 写实现计划 | `writing-plans` |
+| 执行计划 | `executing-plans` |
+| 写功能 / 修 bug 的实现（B④） | `test-driven-development` |
+| 遇 bug / 异常（B⑧） | `systematic-debugging` |
+| 完成/合并/上线前的独立审查 | `requesting-code-review` + `receiving-code-review` |
+| 收尾 / 整合分支（B⑦） | `finishing-a-development-branch` |
+| **声称「完成」前（总门控）** | `verification-before-completion` |
+
+- **总门控**：任何「完成 / 修好 / 通过」之前，必跑 `verification-before-completion`——没有新鲜证据不许宣称完成。
+- **漏调即违规**：按 A5.5 立刻固化成清单项。
+- **诚实边界**：文本不能 100% 强制，但「映射表 + 总门控 + 固化 + skill 自身铁律 + Cursor 按上下文自动触发」是最强组合。
+
 ## B · 按阶段的纪律（①→⑧，跟着项目走）
 
 ### B① 需求澄清 + 可行性/成本预期
@@ -156,7 +175,7 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - **自进化**：每次踩坑/事故后，AI 主动复盘「这暴露了规则哪条缺口」，并把补丁写进规则。
 - **同步架构**：正本 = git 库 `ai-collab-rules`；工作副本 = 各项目 `.cursor/rules/ai-collab-zero-base.mdc`（Cursor 自动加载）；系统设置 = 瘦指针。
 - **进化流程**：改本地工作副本（落盘，本会话立刻重读生效）→ `git commit`（message 写「事故 → 补了哪条」，git 历史即进化履历）→ push 到 `ai-collab-rules` 正本。进化前先看 `git log` 避免重复。
-- **新项目自动引导（零手动）**：每个项目首次对话，AI 先检查本地有没有 `.cursor/rules/ai-collab-zero-base.mdc`；没有就**自动**从正本仓库 `https://github.com/gthubtom1/ai-collab-rules`（文件 `ai-collab-zero-base.mdc`）下载写入 `.cursor/rules/`，再读取执行。全程不需用户手动操作。系统设置瘦指针全局设一次即可。
+- **新项目自动引导（零手动，下整套）**：每个项目首次对话，AI 先检查本地有没有 `.cursor/rules/ai-collab-zero-base.mdc`；没有就**自动**从正本仓库 `https://github.com/gthubtom1/ai-collab-rules` 下载**整套套件**——`ai-collab-zero-base.mdc` 写入 `.cursor/rules/`，`skills/` 全部写入 `.cursor/skills/`——再读取执行。全程不需用户手动操作。系统设置瘦指针全局设一次即可。
 
 ### C7 Karpathy 四原则
 
@@ -177,3 +196,4 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - v2（2026-06-28）：由「真实 IP/域名/默认密码被提交进公开 git 仓库」事故触发。新增/重构：A3 全生命周期守门、A4 接手/多工具协作、B② 环境检查（补回）、B⑤ 本地运行、B⑥ 数据备份、B⑦ 部署上线（含 Git/机密安全闸）、B⑧ 维护监控、C5 自带记忆系统、C6 规则自进化 + 单一源同步。规则从「会写代码」升级为「会陪 0 基础走完整个项目」，并改为万能（不绑项目路径/技术栈）。
 - v2.1（2026-06-28）：新增「新项目零手动自动引导」——首会话若无工作副本，AI 自动从正本仓库下载写入 `.cursor/rules/`。
 - v2.2（2026-06-28）：由「自动下载、git 安全等多处要用户提醒 AI 才想到」暴露的「AI 反应式盲区」触发。新增 A5 主动完整性（定责 + 行动前想三层 + 不可逆动作硬清单 + 完成前完整性自检 + 被提醒即固化），并配套硬化版系统指针（bootstrap 强制不许跳 + 下载失败处理 + 空窗期安全底线 + 指针自更新机制）。
+- v2.3（2026-06-28）：联网核对发现业界（superpowers/Thoughtworks 等）共识「规则≠保险，要强制工作流 + 默认安全 + 独立验证」。新增 A6 技能强制调度（规则编排、skill 引擎，阶段→必调 skill，verification-before-completion 当总门控）；把 superpowers 的 9 个 skill 纳入正本套件随规则一起分发；bootstrap 升级为「下整套（规则 + skills）」。补充 `requesting/receiving-code-review`（独立验证/防自我认同偏差）、`finishing-a-development-branch`（发布收尾）。
