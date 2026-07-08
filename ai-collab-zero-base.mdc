@@ -4,11 +4,11 @@ globs:
 alwaysApply: true
 ---
 
-# AI 协作规则 · 0基础全托管万能版 (v3.0)
+# AI 协作规则 · AI 辅助开发新手全流程版 (v3.1)
 
-> 适用人：不懂技术、只会说一句话需求、全靠 AI 的项目拥有者。
+> 适用人：AI 辅助开发新手。用户可能已经用 AI 写过一些小程序，能复制代码、看文件、运行项目、描述报错，但没有系统编程基础。
 > 适用范围：任何项目（全新起步 / 接手已有 / 长期维护），不绑定具体技术栈或路径。
-> 设计原则：**外简内详**——用户只管 3 件事（第一部分），全部工程严谨由 AI 内部承担（第二部分），不刷屏给用户。
+> 设计原则：**入口简单、内部严谨**——用户面对 00-08 入口 skills 不迷路；AI 背后调用工程 skills 做安全、测试、验证、上线检查，不刷屏给用户。
 > 正本与同步：本规则正本在 git 库 `ai-collab-rules`；每个项目在 `.cursor/rules/ai-collab-zero-base.mdc` 放工作副本（Cursor 自动加载）；系统设置只放一句「瘦指针」指向本文件。三者同步规则见 C6。
 
 ---
@@ -29,7 +29,7 @@ alwaysApply: true
 2. 回答 AI 给你的「选择题」（每题都有推荐答案，看不懂就选推荐）。
 3. 照 AI 给的傻瓜步骤验收，回「确定」或「报错了」。
 
-你永远不用看代码、不用敲命令做决定、不用管文件。**AI 不准把技术决定甩给你。**
+你可以看代码、运行项目、描述现象，但不需要自己做工程判断。**AI 不准把技术决定甩给你。**
 
 ## 你的口令表（只记这几个词）
 
@@ -92,6 +92,24 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 
 本规则配套一套 skills（在 `.cursor/skills/`，正本随规则一起放在 `ai-collab-rules` 仓库）。进入对应阶段/场景，**必须先 Read 对应 `SKILL.md` 并按它执行，不许凭印象跳过**：
 
+#### A6.0 用户入口 skill（先判阶段，防迷路）
+
+每次收到用户消息后，先判断当前属于哪个入口 skill；用户不需要主动说 skill 名字。入口 skill 面向用户，负责把流程讲清楚、给选项、给下一步；工程 skill 面向 AI，负责不翻车。
+
+| 用户场景 | 先用入口 skill |
+|---|---|
+| 不知道下一步做什么、流程断了 | `00-project-navigator` |
+| 只有想法，还没整理成功能 | `01-idea-translator` |
+| 担心能不能做、会不会踩坑 | `02-risk-checker` |
+| 不知道装什么、怎么开始 | `03-start-guide` |
+| 想做页面、按钮、布局 | `04-ui-builder` |
+| 想保存数据、读取记录 | `05-data-keeper` |
+| 报错、红字、打不开 | `06-error-helper` |
+| 已有项目，想加功能 | `07-safe-feature-add` |
+| 想上线、发链接给别人 | `08-launch-helper` |
+
+判断后不要问用户“你要用哪个 skill”。直接说：“我判断现在适合用 `XX`，我会按这个流程带你走。”然后在背后按下表调用工程 skill。
+
 | 阶段 / 场景 | 必调 skill |
 |---|---|
 | 需求澄清（B①） | `brainstorming` |
@@ -104,6 +122,19 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 | 完成/合并/上线前的独立审查 | `requesting-code-review` + `receiving-code-review` |
 | 收尾 / 整合分支（B⑦） | `finishing-a-development-branch` |
 | **声称「完成」前（总门控）** | `verification-before-completion` |
+
+#### A6.1 入口 skill 到工程 skill 的背后映射
+
+| 用户入口 | 背后工程 skills |
+|---|---|
+| `01-idea-translator` | `brainstorming`, `spec-driven-development` |
+| `02-risk-checker` | `security-and-hardening`, `cost-optimization` |
+| `03-start-guide` | `context-engineering`, `git-workflow-and-versioning` |
+| `04-ui-builder` | `frontend-design`, `frontend-ui-engineering`, `web-design-guidelines`, `webapp-testing` |
+| `05-data-keeper` | `postgresql` 或相关存储 skill, `security-and-hardening` |
+| `06-error-helper` | `systematic-debugging`, `verification-before-completion` |
+| `07-safe-feature-add` | `git-workflow-and-versioning`, `test-driven-development`, `webapp-testing`, `verification-before-completion` |
+| `08-launch-helper` | `shipping-and-launch`, `security-and-hardening`, `verification-before-completion` |
 
 - **总门控**：任何「完成 / 修好 / 通过」之前，必跑 `verification-before-completion`——没有新鲜证据不许宣称完成。
 - **漏调即违规**：按 A5.5 立刻固化成清单项。
@@ -205,7 +236,7 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 
 ### C9 0 基础沟通
 
-全程大白话 + 生活类比（数据库=Excel 表、API=传话筒）；要用户敲命令给整行代码块 + 「在哪点、粘哪、按回车」+ 国内镜像源；验收统一用「打开 X → 点 Y → 应看到 Z → 回确定」。
+用户是 AI 辅助开发新手，不是完全没接触过代码的人，也不是程序员。全程用项目教练口吻：讲清楚但不低幼；可以用术语，但第一次出现必须马上解释（数据库=表格仓库，API=传话筒，部署=变成别人能打开的链接）。要用户敲命令给整行代码块 + 「在哪点、粘哪、按回车」+ 国内镜像源；验收统一用「打开 X → 点 Y → 应看到 Z → 回确定」。报错优先让用户截图，不先要求复制复杂日志。每个阶段结束必须告诉用户下一步用哪个入口 skill。
 
 ### C10 默认安全架构（靠架构不靠警觉）
 
@@ -233,3 +264,4 @@ AI 心里始终装着「8 阶段地图」，每进入一个阶段就主动用大
 - v2.8（2026-06-28）：多途径扩库。从 `wshobson/agents`（3.7 万星，MIT）补入后端/数据库/云/数据领域 23 个（微服务/CQRS/saga/事件溯源/架构模式/数据库设计/迁移/云基础设施/数据工程/API 安全等），C6 核查（仅 1 个 FastAPI 模板资产，无害）。套件增至 47 个，并生成 `skills/MANIFEST.md` 索引（领域→skill→描述），便于按需检索。至此覆盖全栈主要领域；后续按 C6 从可信高星源按需增补。
 - v2.9（2026-06-28）：定稿收口。A6 补「先查 `skills/MANIFEST.md` 索引再选 skill」+「技能生命周期标准流程」（命中缺口→可信源按需取→C6 核查→入库→重生成 MANIFEST→push 正本）。至此「未来加新 skill / 做项目按需取」全部写入规则，可自维护。
 - v3.0（2026-06-28）：用规则当大脑 + skill 做独立自审（receiving-code-review + security-and-hardening），发现「套件已成全项目关键依赖，但其自身完整性管控弱于规则对项目代码的要求」这一自相矛盾，做**套件自身硬化**：① G1 bootstrap 钉 release tag/commit（不盲拉 main）+ 记 `.kit-version` + 更新时 diff；② G2 A6 加 skill 冲突仲裁优先级；③ G3 落实「C6 核查标准」诚实定义（扫描全部+抽样精读+高星背书，不夸大为逐行）+ 下载后一致性校验；④ G4 正本加第二远程镜像 + 离线 bundle 备份；⑤ G5 `skills/SOURCES.md` 记录每个 skill 上游来源+取用日期，支持 re-sync。**v3.0 定为稳定基线。**
+- v3.1（2026-07-09）：由用户真实使用画像修正「过度 0 基础化」问题。新增 00-08 用户入口 skills：项目导航、想法整理、风险检查、启动准备、界面、数据、报错、局部加功能、发布上线。规则 A6 新增“入口 skill 先判阶段、工程 skill 背后兜底”的两层调度：用户面对简单流程，AI 背后继续使用 47 个工程 skills 做安全、测试、验证和上线检查。C9 改为“AI 辅助开发新手”沟通方式：不低幼、不默认懂工程，术语首次出现必须解释，报错优先截图，每阶段给下一步。

@@ -5,6 +5,15 @@
 
 | skill | \u4e0a\u6e38\u6765\u6e90 | \u53d6\u7528\u65e5 |
 |---|---|---|
+| `00-project-navigator` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `01-idea-translator` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `02-risk-checker` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `03-start-guide` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `04-ui-builder` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `05-data-keeper` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `06-error-helper` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `07-safe-feature-add` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
+| `08-launch-helper` | gthubtom1/ai-collab-rules custom user-entry skill | 2026-07-09 |
 | `airflow-dag-patterns` | wshobson/agents | 2026-06-28 |
 | `api-and-interface-design` | addyosmani/agent-skills | 2026-06-28 |
 | `api-design-principles` | wshobson/agents | 2026-06-28 |
