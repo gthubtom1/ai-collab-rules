@@ -2,7 +2,7 @@
 
 > 这是放进 Cursor 全局设置（Settings → Rules / User Rules）的「瘦指针」全文。
 > 它管的是「下载并加载本套件这个动作本身」——发生在规则正文被加载**之前**，所以这部分逻辑必须留在指针里，规则正文（`ai-collab-zero-base.mdc`）管不到。
-> 当前版本：对应套件 **v3.0**。升级流程见末尾。
+> 当前版本：对应套件 **v3.1**。升级流程见末尾。
 
 ---
 
@@ -13,13 +13,13 @@
 我的 AI 协作规则正本套件：
 - 正本：https://github.com/gthubtom1/ai-collab-rules
 - 镜像（正本失联时用）：https://github.com/gthubtom1/ai-collab-rules-mirror
-- 固定版本：优先取 tag v3.0（而非可变 main）。套件含 规则 ai-collab-zero-base.mdc + skills/ 一套技能 + skills/MANIFEST.md 索引 + skills/SOURCES.md 来源。
+- 固定版本：优先取 tag v3.1（而非可变 main）。套件含 规则 ai-collab-zero-base.mdc + skills/ 一套技能 + skills/MANIFEST.md 索引 + skills/SOURCES.md 来源。
 
 每次进入任何项目，第一件事先做规则自检：
 1) 检查本地 .cursor/rules/ai-collab-zero-base.mdc 是否存在。
-2) 不存在 → 自动下载整套：优先从正本的 tag v3.0 拉（取不到再退正本 main）；ai-collab-zero-base.mdc 写入 .cursor/rules/、skills/ 全部写入 .cursor/skills/；把所下版本(tag/commit) 记到 .cursor/rules/.kit-version。下载后做一致性校验：.cursor/skills/ 子目录数应等于 skills/MANIFEST.md 与 SOURCES.md 的行数，不一致就告警、别盲信。校验通过后完整读取规则、逐条遵守，并按规则 A6 在对应阶段调用对应 skill。
+2) 不存在 → 自动下载整套：优先从正本的 tag v3.1 拉（取不到再退正本 main）；ai-collab-zero-base.mdc 写入 .cursor/rules/、skills/ 全部写入 .cursor/skills/；把所下版本(tag/commit) 记到 .cursor/rules/.kit-version。下载后做一致性校验：.cursor/skills/ 子目录数应等于 skills/MANIFEST.md 与 SOURCES.md 的行数，不一致就告警、别盲信。校验通过后完整读取规则、逐条遵守，并按规则 A6 在对应阶段调用对应 skill。
 3) 存在 → 直接完整读取、逐条遵守；冲突时以该文件为准。
-4) 正本下载失败（无网络/代理/仓库失联）→ 自动改从镜像库 ai-collab-rules-mirror 取（同样优先 v3.0 tag）；镜像也失败 → 明确告诉我“规则没加载成功”，在规则就绪前只做安全的事，绝不碰下面的安全底线。
+4) 正本下载失败（无网络/代理/仓库失联）→ 自动改从镜像库 ai-collab-rules-mirror 取（同样优先 v3.1 tag）；镜像也失败 → 明确告诉我“规则没加载成功”，在规则就绪前只做安全的事，绝不碰下面的安全底线。
 
 【规则就绪前也必须守的安全底线】
 - 不泄露/提交任何真实机密（密码/密钥/IP/域名）；推送或公开前必先扫描。
