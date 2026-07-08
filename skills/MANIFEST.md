@@ -4,6 +4,15 @@
 
 | skill | 描述 |
 |---|---|
+| `00-project-navigator` | 用户入口 skill。用户不知道下一步、流程断了、或不知道该用哪个 skill 时，先判断阶段并导航到正确入口。 |
+| `01-idea-translator` | 用户入口 skill。把模糊想法整理成功能清单；不急着写代码，结束后进入风险检查。 |
+| `02-risk-checker` | 用户入口 skill。检查功能清单里的复杂、花钱、容易卡住的点，并给保守替代方案。 |
+| `03-start-guide` | 用户入口 skill。处理怎么开始、装什么、项目怎么创建；只推荐必要工具，尽量用网页版。 |
+| `04-ui-builder` | 用户入口 skill。先做看得见的页面、按钮、输入框和布局，并给打开页面的验证动作。 |
+| `05-data-keeper` | 用户入口 skill。选择本地保存或云端保存，让内容能保存、读取、刷新后还在。 |
+| `06-error-helper` | 用户入口 skill。处理报错、红字、打不开；优先截图，再做系统化调试和验证。 |
+| `07-safe-feature-add` | 用户入口 skill。在已有能跑的项目上安全加功能；先备份、局部修改、验证旧功能和新功能。 |
+| `08-launch-helper` | 用户入口 skill。上线发布并生成别人能打开的链接；不超过 5 步，先做机密安全检查。 |
 | `airflow-dag-patterns` | Build production Apache Airflow DAGs with best practices for operators, sensors, testing, … |
 | `api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any… |
 | `api-design-principles` | Master REST and GraphQL API design principles to build intuitive, scalable, and maintainab… |

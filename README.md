@@ -1,8 +1,8 @@
 # ai-collab-rules · AI 协作规则正本（万能版）
 
-这是「**AI 协作规则 · 0基础全托管万能版**」的**正本（master）**。适用于任何用 Cursor/AI 开发的项目，不绑技术栈、不绑路径。
+这是「**AI 协作规则 · AI 辅助开发新手全流程版**」的**正本（master）**。适用于任何用 Cursor/AI 开发的项目，不绑技术栈、不绑路径。
 
-> 给 0 基础项目拥有者：你只管 3 件事（说需求 / 答选择题 / 验收），全部工程严谨由 AI 内部承担。
+> 给 AI 辅助开发新手：你可以用 AI 写过小程序、会复制运行代码，但不需要自己做工程判断。你面对 00-08 入口 skills；AI 背后用工程 skills 做安全、测试、验证。
 
 ## 怎么用（推荐：零手动）
 
@@ -11,9 +11,10 @@
 ```
 【最高优先 · 每次会话第一步，先于一切，不许跳过】
 我的 AI 协作规则正本套件：https://github.com/gthubtom1/ai-collab-rules （规则 ai-collab-zero-base.mdc + skills/ 一套技能）。
+固定版本：优先取 tag v3.1（而非可变 main）。
 每次进入任何项目，第一件事先做规则自检：
 1) 检查本地 .cursor/rules/ai-collab-zero-base.mdc 是否存在。
-2) 不存在 → 自动从上面仓库下载整套：ai-collab-zero-base.mdc 写入 .cursor/rules/、skills/ 全部写入 .cursor/skills/，成功后完整读取规则、逐条遵守，并按规则 A6 在对应阶段调用对应 skill。
+2) 不存在 → 自动从上面仓库下载整套：优先取 tag v3.1；ai-collab-zero-base.mdc 写入 .cursor/rules/、skills/ 全部写入 .cursor/skills/，成功后完整读取规则、逐条遵守，并按规则 A6 在对应阶段调用对应 skill。
 3) 存在 → 直接完整读取、逐条遵守；冲突时以该文件为准。
 4) 下载失败（无网络/代理）→ 明确告诉我"规则没加载成功"，在规则就绪前只做安全的事，绝不碰下面的安全底线。
 
@@ -33,6 +34,15 @@
 
 | 阶段 / 场景 | 调用的 skill |
 |---|---|
+| 不知道下一步 / 选择入口 | `00-project-navigator` |
+| 想法整理 | `01-idea-translator` |
+| 风险检查 | `02-risk-checker` |
+| 启动准备 | `03-start-guide` |
+| 页面/界面 | `04-ui-builder` |
+| 数据保存 | `05-data-keeper` |
+| 报错处理 | `06-error-helper` |
+| 局部加功能 | `07-safe-feature-add` |
+| 发布上线 | `08-launch-helper` |
 | 需求澄清 | `brainstorming` |
 | 写实现计划 | `writing-plans` |
 | 执行计划 | `executing-plans` |
